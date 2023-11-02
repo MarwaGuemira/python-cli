@@ -1,0 +1,9 @@
+[project]
+name = "convert_number"
+version = "0.0.1"
+dependencies = [
+    "click"
+]
+
+[project.scripts]
+hwc = "convert_number.converter:convert"
