@@ -15,21 +15,33 @@ def convert_to_roman(number):
     return result
 
 
+def has_repeated_vld(roman):
+    invalid_symbols = ['V', 'L', 'D']
+    
+    for symbol in invalid_symbols:
+        if roman.count(symbol) > 1:
+            return True  
+    return False
+
+
 def convert_to_number(roman):
     roman_numerals = {
         'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100,
         'D': 500, 'M': 1000
     }
-    result = 0
-    rest = 0
-    for symbol in reversed(roman):
-        value = roman_numerals[symbol]
-        if value < rest:
-            result -= value
-        else:
-            result += value
-        rest = value
-    return result
+    if has_repeated_vld(roman)==True:
+        return 'errror'
+    else:
+        result = 0
+        rest = 0
+        for symbol in reversed(roman):
+            value = roman_numerals[symbol]
+            if value < rest:
+                result -= value
+            else:
+                result += value
+            rest = value
+        return result
 
 
 @click.command()
